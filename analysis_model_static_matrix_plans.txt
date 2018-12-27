@@ -1,0 +1,43 @@
+local vuso = amostra('usoocupacao_final_1') or 0
+local lito = amostra('litologico_final_1') or 0
+local decliv = amostra('declividade_final_1') or 0
+
+
+local plito = 0
+if lito == 1 then
+  plito = 0.125
+elseif lito == 2 then
+  plito = 0.375
+elseif lito == 3 then
+  plito = 0.625
+else
+  plito = 0.875
+end
+
+local pdecliv = 0
+if decliv == 1 then
+  pdecliv = 0.025
+elseif decliv == 2 then
+  pdecliv = 0.125
+elseif decliv == 3 then
+  pdecliv = 0.625
+elseif decliv == 4 then
+  pdecliv = 0.875
+elseif decliv == 5 then
+  pdecliv = 1
+else
+  pdecliv = 1.2
+end
+
+local pvuso = 0
+if vuso == 1 then
+  pvuso = 0.875
+elseif vuso == 2 then
+  pvuso = 1
+else
+  pvuso = 0.625
+end
+
+return 1.93  * pvuso + 
+       2.32 * plito + 
+       2.78 * pdecliv

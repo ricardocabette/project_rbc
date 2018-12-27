@@ -1,0 +1,27 @@
+local pcd_novelis=0
+local pcd_novelis_1=influencia_pcd('pcd_novelis_1')
+
+
+for i,v in ipairs(pcd_novelis_1) do
+	pcd_novelis = media_historico_pcd('pcd_novelis_1', 'pluvio', v, 1)
+end
+
+print('Media pcd_novelis')
+print(pcd_novelis)
+
+
+local var1 = minimo('Risco') or 0
+var1 = var1 + 0.58*pcd_novelis
+
+if var1 < 5.125 then
+     return 0
+   elseif var1 < 8.385 then
+     return 1
+   elseif var1 < 13.855 then
+     return 2
+   elseif var1 < 16.125 then
+     return 3
+   else
+     return 4
+end
+
